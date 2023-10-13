@@ -45,7 +45,7 @@ where
 \end{aligned}
 ```
 ### Levenberg–Marquardt algorithm
-We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquardt algorithm:
+Let's denote $\left(K_i,T_i,\sigma^{\text{market}}(K_i,T_i)\right)_{i=1}^n$ - market data for OTM options. We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquardt algorithm:
 ```math
 \begin{equation}
      \vec{\theta}_{k+1} = \vec{\theta_{k}} - (\lambda\text{diag}(JJ^T) + JJ^T)^{-1}J\vec{r}
@@ -53,6 +53,17 @@ We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquard
 ```
 where
 ```math
-\vec{r}=\begin{pmatrix} \hat{\sigma}(K_1,T_1,\vec{\theta_k}) - \sigma^{\text{market}}(K_1,T_1) \\ \hat{\sigma}(K_2,T_2,\vec{\theta_k}) - \sigma^{\text{market}}(K_2,T_2)  \\ \vdots \\ \hat{\sigma}(K_n,T_n,\vec{\theta_k}) - \sigma^{\text{market}}(K_n,T_n)  \end{pmatrix}
+\vec{r}=\begin{pmatrix} \hat{\sigma}(K_1,T_1,\vec{\theta_k}) - \sigma^{\text{market}}(K_1,T_1) \\ \hat{\sigma}(K_2,T_2,\vec{\theta_k}) - \sigma^{\text{market}}(K_2,T_2)  \\ \vdots \\ \hat{\sigma}(K_n,T_n,\vec{\theta_k}) - \sigma^{\text{market}}(K_n,T_n)  \end{pmatrix}\;
+ {J}=\begin{pmatrix}
+\frac{\partial r_1}{\partial\alpha} & \frac{\partial r_2}{\partial\alpha} & \cdots & \frac{\partial r_n}{\partial\alpha} \\
+\frac{\partial r_1}{\partial\beta} & \frac{\partial r_2}{\partial\beta} & \cdots & \frac{\partial r_n}{\partial\beta}\\
+\frac{\partial r_1}{\partial\rho} & \frac{\partial r_2}{\partial\rho} & \cdots & \frac{\partial r_n}{\partial\rho}\\
+\frac{\partial r_1}{\partial v} & \frac{\partial r_2}{\partial v} & \cdots & \frac{\partial r_n}{\partial v}
+\end{pmatrix}
 ```
-
+also we have loss function L to control $\lambda$ on each step
+```math
+\begin{equation}
+   L(\vec{\theta})  = \sum_{i=1}^n(\hat{\sigma}(K_i,T_i,\vec{\theta}) - \sigma^{\text{market}}(K_i,T_i))^2
+\end{equation}
+```
