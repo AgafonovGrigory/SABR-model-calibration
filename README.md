@@ -53,6 +53,6 @@ We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquard
 ```
 where
 ```math
-\vec{r}=\begin{pmatrix} \hat{\sigma}(K_1,T_1,\vec{\theta}) - \sigma^{\text{market}}(K_1,T_1) \\ \hat{\sigma}(K_2,T_2,\vec{\theta}) - \sigma^{\text{market}}(K_2,T_2)  \\ \vdots \\ \hat{\sigma}(K_n,T_n,\vec{\theta}) - \sigma^{\text{market}}(K_n,T_n)  \end{pmatrix}
+\vec{r}=\begin{pmatrix} \hat{\sigma}(K_1,T_1,\vec{\theta_k}) - \sigma^{\text{market}}(K_1,T_1) \\ \hat{\sigma}(K_2,T_2,\vec{\theta_k}) - \sigma^{\text{market}}(K_2,T_2)  \\ \vdots \\ \hat{\sigma}(K_n,T_n,\vec{\theta_k}) - \sigma^{\text{market}}(K_n,T_n)  \end{pmatrix}
 ```
 
