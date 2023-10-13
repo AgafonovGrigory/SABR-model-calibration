@@ -16,30 +16,43 @@ Under the SABR (stochastic $\\alpha, \\beta, \\rho$) model the stock price is go
  \begin{cases}
    dF_t = \alpha_t F_t^{\beta} dW^1_t\\
    d\alpha_t = v \alpha_t dW^2_t\\
-   dW^1_t dW^2_t = \rho dt
+   dW^1_t dW^2_t = \rho dt\\
+   F_0 = F &\text{initial condition}\\
+   \alpha_0 = \alpha &\text{initial condition}
  \end{cases}
 \end{equation}
 ```
-with initial conditions  on $F, \\alpha$. The parameters satisfy conditions $0 \\leq \\beta \\leq 1$, $\\alpha \\geq 0, v \\geq 0$, $-1 \\leq \\rho \\leq 1$
+The parameters satisfy conditions $0 \\leq \\beta \\leq 1$, $\\alpha \\geq 0, v \\geq 0$, $-1 \\leq \\rho \\leq 1$
 
 ### Hagan formula
 The approximate formula for implied volatility is valid:
 ```math
 \begin{aligned}
-  &\: \sigma_{impl} = \frac{\alpha S}{D} \cdot \frac{z}{X(z, \rho)}
+  &\: \hat{\sigma}(T,K,\alpha,\beta,\rho,v) = \frac{\alpha S}{D} \cdot \frac{z}{X(z)}
 \end{aligned}
 ```
 where 
 ```math
 \begin{aligned}
- &\: F_{mid} = \sqrt{F K} \\
- &\: z = \frac{v}{\alpha}F_{mid}^{1-\beta}\log \frac{F}{K} \\
- &\: X(z, \rho) = \log \frac{\sqrt{1 - 2 z \rho + z^2} + z - \rho}{1-\rho} \\
- &\: r_1 = \frac{(\beta-1)^2 \alpha^2 F_{mid}^{2\beta - 2}}{24} \\
- &\: r_2 = \frac{\rho \beta \alpha v F_{mid}^{\beta - 1}}{4} \\
- &\: r_3 = \frac{2-3\rho^2}{24}v^2 \\
- &\: S = 1 + T(r_1 + r_2 + r_3) \\
- &\: D = F_{mid}^{1-\beta}\left[ 1 + \frac{(\beta-1)^2}{24} \log^2 \frac{F}{K} + \frac{(\beta-1)^4}{1920}\log^4 \frac{F}{K}\right]
+ &\: \quad\quad\quad\quad\quad\quad\quad F_{mid} = \sqrt{F K} \\
+ &\: \quad\quad\quad\quad\quad\quad\quad z = \frac{v}{\alpha}F_{mid}^{1-\beta}\log \frac{F}{K} \\
+ &\: \quad\quad\quad\quad\quad\quad\quad X(z) = \log \frac{\sqrt{1 - 2 z \rho + z^2} + z - \rho}{1-\rho} \\
+ &\: \quad\quad\quad\quad\quad\quad\quad r_1 = \frac{(\beta-1)^2 \alpha^2 F_{mid}^{2\beta - 2}}{24} \\
+ &\: \quad\quad\quad\quad\quad\quad\quad r_2 = \frac{\rho \beta \alpha v F_{mid}^{\beta - 1}}{4} \\
+ &\: \quad\quad\quad\quad\quad\quad\quad r_3 = \frac{2-3\rho^2}{24}v^2 \\
+ &\: \quad\quad\quad\quad\quad\quad\quad S = 1 + T(r_1 + r_2 + r_3) \\
+ &\: \quad\quad\quad\quad\quad\quad\quad D = F_{mid}^{1-\beta}\left[ 1 + \frac{(\beta-1)^2}{24} \log^2 \frac{F}{K} + \frac{(\beta-1)^4}{1920}\log^4 \frac{F}{K}\right]
 \end{aligned}
+```
+### Levenberg–Marquardt algorithm
+We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquardt algorithm:
+```math
+\begin{equation}
+     \vec{\theta}_{k+1} = \vec{\theta_{k}} - (\lambda\text{diag}(JJ^T) + JJ^T)^{-1}J\vec{r}
+\end{equation}
+```
+where
+```math
+\vec{r}=\begin{pmatrix} \hat{\sigma}(K_1,T_1,\vec{\theta}) - \sigma^{\text{market}}(K_1,T_1) \\ \hat{\sigma}(K_2,T_2,\vec{\theta}) - \sigma^{\text{market}}(K_2,T_2)  \\ \vdots \\ \hat{\sigma}(K_n,T_n,\vec{\theta}) - \sigma^{\text{market}}(K_n,T_n)  \end{pmatrix}
 ```
 
