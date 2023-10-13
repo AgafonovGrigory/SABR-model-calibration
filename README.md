@@ -25,24 +25,21 @@ with initial conditions  on $F, \\alpha$. The parameters satisfy conditions $0 \
 ### Hagan formula
 The approximate formula for implied volatility is valid:
 ```math
-\begin{equation}
-  \sigma = \frac{\alpha S}{D} \cdot \frac{z}{X(z, \rho)}
-\end{equation}
+\begin{aligned}
+  &\: \sigma_{impl} = \frac{\alpha S}{D} \cdot \frac{z}{X(z, \rho)}
+\end{aligned}
 ```
 where 
 ```math
-\begin{equation}
- \begin{cases}
-   F_{mid} = \sqrt{F K}\\
-   z = \frac{v}{\alpha}F_{mid}^{1-\beta}\log \frac{F_{mid}}{K}\\
-   X(z, \rho) = \log \frac{\sqrt{1 - 2 z \rho + z^2} + z - \rho}{1-\rho}\\
-   r_1 = \frac{(\beta-1)^2 \alpha^2 F_{mid}^{2\beta - 2}}{24}\\
-   r_2 = \frac{\rho \beta \alpha v F_{mid}^{\beta - 1}}{4}\\
-   r_3 = \frac{2-3\rho^2}{24}v^2\\
-   S = 1 + T(r_1 + r_2 + r_3)\\
-   D = F_{mid}^{1-\beta}\left[ 1 + \frac{(\beta-1)^2}{24} \log^2 \frac{F}{K} + \frac{(\beta-1)^4}{1920}\log^4 \frac{F}{K}\right]\\
- \end{cases}
-\end{equation}
+\begin{aligned}
+ &\: F_{mid} = \sqrt{F K} \\
+ &\: z = \frac{v}{\alpha}F_{mid}^{1-\beta}\log \frac{F}{K} \\
+ &\: X(z, \rho) = \log \frac{\sqrt{1 - 2 z \rho + z^2} + z - \rho}{1-\rho} \\
+ &\: r_1 = \frac{(\beta-1)^2 \alpha^2 F_{mid}^{2\beta - 2}}{24} \\
+ &\: r_2 = \frac{\rho \beta \alpha v F_{mid}^{\beta - 1}}{4} \\
+ &\: r_3 = \frac{2-3\rho^2}{24}v^2 \\
+ &\: S = 1 + T(r_1 + r_2 + r_3) \\
+ &\: D = F_{mid}^{1-\beta}\left[ 1 + \frac{(\beta-1)^2}{24} \log^2 \frac{F}{K} + \frac{(\beta-1)^4}{1920}\log^4 \frac{F}{K}\right]
+\end{aligned}
 ```
-
 
