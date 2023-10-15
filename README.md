@@ -25,7 +25,7 @@ According to the SABR (stochastic $\\alpha, \\beta, \\rho$) model the stock pric
 The parameters satisfy conditions $0 \\leq \\beta \\leq 1$, $\\alpha \\geq 0, v \\geq 0$, $-1 \\leq \\rho \\leq 1$
 
 ### Hagan formula
-The approximate formula for implied volatility is valid:
+Here is the approximate formula for implied volatility:
 ```math
 \begin{aligned}
   &\: \hat{\sigma}(T,K,\alpha,\beta,\rho,v) = \frac{\alpha S}{D} \cdot \frac{z}{X(z)}
