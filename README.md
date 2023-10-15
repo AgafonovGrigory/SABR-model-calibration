@@ -2,7 +2,7 @@
 In this repo we calibrate SABR model for BTC options using market data from [Deribit](https://www.deribit.com/). 
 Calibration is performed using the Levenberg-Marquardt method for OTM options.
 
-Main results you can see [here](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_calibration.ipynb)
+Main results can be seen [here](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_calibration.ipynb)
 
 [External_functions.py](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/external_functions.py) file contains function for calculating 
 implied volatility using the Hagan formula, function for Levenberg-Marquardt Method and some other functions. 
