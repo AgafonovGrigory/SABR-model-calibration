@@ -1,6 +1,6 @@
 # SABR-model-calibration
 In this repo we calibrate SABR model for BTC options using market data from [Deribit](https://www.deribit.com/). 
-Calibration is performed using the Levenberg-Marquardt Method method on OTM options.
+Calibration is performed using the Levenberg-Marquardt method for OTM options.
 
 Main results you can see [here](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_calibration.ipynb)
 
