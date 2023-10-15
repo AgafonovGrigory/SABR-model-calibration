@@ -45,7 +45,7 @@ where
 \end{aligned}
 ```
 ### Levenberg–Marquardt algorithm
-Let's denote $\left(K_i,T_i,\sigma^{\text{market}}(K_i,T_i)\right)_{i=1}^n$ - market data for OTM options. We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquardt algorithm:
+Let's denote market data for OTM options as $\left(K_i,T_i,\sigma^{\text{market}}(K_i,T_i)\right)_{i=1}^n$. We'll optimize $\vec{\theta} = (\alpha,\beta,\rho,v)$ using Levenberg–Marquardt algorithm:
 ```math
 \begin{equation}
      \vec{\theta}_{k+1} = \vec{\theta_{k}} - (\lambda\text{diag}(JJ^T) + JJ^T)^{-1}J\vec{r}
