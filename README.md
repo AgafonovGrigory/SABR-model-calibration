@@ -4,10 +4,10 @@ Calibration is performed using the Levenberg-Marquardt method for OTM options.
 
 Main results can be seen [here](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_calibration.ipynb)
 
-[External_functions.py](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/external_functions.py) file contains function for calculating 
-implied volatility using the Hagan formula, function for Levenberg-Marquardt Method and some other functions. 
+[External_functions.py](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/external_functions.py) file contains a function for calculating 
+implied volatility using the Hagan formula,  a function for Levenberg-Marquardt method and some other functions. 
 
-[SABR_class.py](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_class.py) file contains SABR class. This class has methods fit_iv, predict_iv, predict_call_price, predict_put_price. The first one fits the parameters of the SABR model to the market implied volatility while the others predict volatility call and put prices using calibrated parameters.
+[SABR_class.py](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_class.py) file contains SABR class. This class has methods fit_iv, predict_iv, predict_call_price, predict_put_price. The first one fits the parameters of the SABR model to the market implied volatility while the others predict volatility, call and put prices using calibrated parameters.
 
 ### SABR model definition
 Under the SABR (stochastic $\\alpha, \\beta, \\rho$) model the stock price is governed by the following system of SDE:
