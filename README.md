@@ -10,7 +10,7 @@ implied volatility using the Hagan formula,  a function for Levenberg-Marquardt 
 [SABR_class.py](https://github.com/AgafonovGrigory/SABR-model-calibration/blob/main/SABR_class.py) file contains SABR class. This class has methods fit_iv, predict_iv, predict_call_price, predict_put_price. The first one fits the parameters of the SABR model to the market implied volatility while the others predict volatility, call and put prices using calibrated parameters.
 
 ### SABR model definition
-According to the SABR (stochastic $\\alpha, \\beta, \\rho$) model the stock price obeys the following system of SDE:
+According to the SABR (stochastic $\\alpha, \\beta, \\rho$) model the asset price obeys the following system of SDE:
 ```math
 \begin{equation}
  \begin{cases}
